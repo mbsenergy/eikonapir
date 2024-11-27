@@ -4,8 +4,13 @@
 \alias{get_symbology}
 \title{get_symbology}
 \usage{
-get_symbology(symbol, from_symbol_type = "RIC", to_symbol_type = NULL,
-  raw_ouput = FALSE, debug = FALSE)
+get_symbology(
+  symbol,
+  from_symbol_type = "RIC",
+  to_symbol_type = NULL,
+  raw_ouput = FALSE,
+  debug = FALSE
+)
 }
 \arguments{
 \item{symbol:}{string or list of strings

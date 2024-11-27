@@ -4,8 +4,7 @@
 \alias{TR_Field}
 \title{TR_Field}
 \usage{
-TR_Field(field_name, params = NULL, sort_dir = "asc",
-  sort_priority = NULL)
+TR_Field(field_name, params = NULL, sort_dir = "asc", sort_priority = NULL)
 }
 \arguments{
 \item{field_name:}{string}

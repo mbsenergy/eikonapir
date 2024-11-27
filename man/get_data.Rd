@@ -4,8 +4,13 @@
 \alias{get_data}
 \title{get_data}
 \usage{
-get_data(instruments, fields, parameters = NULL, raw_output = FALSE,
-  debug = FALSE)
+get_data(
+  instruments,
+  fields,
+  parameters = NULL,
+  raw_output = FALSE,
+  debug = FALSE
+)
 }
 \arguments{
 \item{instruments:}{string or list. A single instrument or list of instruments to request.}

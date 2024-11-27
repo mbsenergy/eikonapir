@@ -4,9 +4,14 @@
 \alias{get_news_headlines}
 \title{get_news_headlines}
 \usage{
-get_news_headlines(query = "Topic:TOPALL and Language:LEN",
-  count = 10L, date_from = NULL, date_to = NULL,
-  raw_output = FALSE, debug = FALSE)
+get_news_headlines(
+  query = "Topic:TOPALL and Language:LEN",
+  count = 10L,
+  date_from = NULL,
+  date_to = NULL,
+  raw_output = FALSE,
+  debug = FALSE
+)
 }
 \arguments{
 \item{query:}{string, optional. Search criteria for the news headlines
@@ -39,7 +44,7 @@ Returns a data frame contianing the news headlines
 > set_app_id('set your app id here')
 > headlines = ek.get_news_headlines("R:MSFT.O", 2)
 > print(headlines)
-versionCreated                                              text \\
+versionCreated                                              text \
 2016-04-13 18:28:57.000 2016-04-13 18:28:59.001 RBC Applies Blockchain as a Loyalty Boost<MSFT...
 2016-04-13 17:28:21.577 2016-04-13 17:28:21.671 UPDATE 2-Long-stalled email privacy bill advan...
 storyId
