@@ -2,15 +2,17 @@
 % Please edit documentation in R/profile.R
 \name{get_app_id}
 \alias{get_app_id}
-\title{get_app_id}
+\title{Get Application ID}
 \usage{
-get_app_id(appId)
+get_app_id()
+}
+\value{
+A character string containing the application ID.
 }
 \description{
-Use this function to get back the application id you have set earlier with set_app_id.
+Retrieves the application ID that was previously set using `set_app_id()`.
 }
 \examples{
---------
-library(eikon_r)
+library(eikonapir)
 my_app_id = get_app_id()
 }

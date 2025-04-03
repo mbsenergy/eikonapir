@@ -2,7 +2,7 @@
 % Please edit documentation in R/time_series.R
 \name{get_timeseries}
 \alias{get_timeseries}
-\title{get_timeseries}
+\title{Retrieve Historical Time Series Data}
 \usage{
 get_timeseries(
   rics,
@@ -10,57 +10,47 @@ get_timeseries(
   start_date = NULL,
   end_date = NULL,
   interval = "daily",
-  normalize = FALSE,
-  count = NULL,
-  calendar = NULL,
-  corax = NULL,
   raw_output = FALSE,
+  calendar = NULL,
+  count = NULL,
+  corax = NULL,
   debug = FALSE
 )
 }
 \arguments{
-\item{rics:}{string or list of strings.
-Single RIC or List of RICs to retrieve historical data for}
+\item{rics}{A character string or list of character strings specifying the RICs to retrieve data for.}
 
-\item{fields:}{string or list of strings
-Use this parameter to filter the returned fields set.}
+\item{fields}{A character string or list of strings specifying the fields to retrieve.
+Available fields: `c("TIMESTAMP", "VALUE", "VOLUME", "HIGH", "LOW", "OPEN", "CLOSE", "COUNT")`.
+Default: `"*"` (all fields).}
 
-\item{start_date:}{string. The start date of the historical range
-string format is: %Y-%m-%dT%H:%M:%S. ex: 2016-01-20T15:04:05.
-Default: current date - 100 days}
+\item{start_date}{A character string specifying the start date in format `"%Y-%m-%dT%H:%M:%S"` (e.g., `"2016-01-20T15:04:05"`).
+Default: 100 days before the current date.}
 
-\item{end_date:}{string. The end date of the historical range.}
+\item{end_date}{A character string specifying the end date in format `"%Y-%m-%dT%H:%M:%S"`.
+Default: current date.}
 
-\item{interval:}{string. the data interval.
-Possible values: 'tick', 'minute', 'hour', 'daily', 'weekly', 'monthly', 'quarterly', 'yearly' (Default 'daily')}
+\item{interval}{A character string specifying the data interval.
+Possible values: `"tick"`, `"minute"`, `"hour"`, `"daily"`, `"weekly"`, `"monthly"`, `"quarterly"`, `"yearly"`.
+Default: `"daily"`.}
 
-\item{count:}{int. The maximum number of data points you want tp retrieve.}
+\item{raw_output}{A logical value. If `TRUE`, returns data in raw JSON format.
+If `FALSE`, returns a data frame. Default: `FALSE`.
+This parameter is ignored if `raw_output = TRUE`. Default: `FALSE`.}
 
-\item{calendar:}{string. Possible values: 'native', 'tradingdays', 'calendardays'.}
+\item{calendar}{A character string specifying the calendar type.
+Possible values: `"native"`, `"tradingdays"`, `"calendardays"`.}
 
-\item{corax:}{string. Possible values are : 'adjusted', 'unadjusted'}
+\item{count}{An integer specifying the maximum number of data points to retrieve.}
 
-\item{raw_output:}{boolean
-Set this parameter to TRUE to get the data in json format
-if set to FALSE, the function will return a data frame which shape is defined by the parameter normalize
-The default value is False}
+\item{corax}{A character string specifying the correction method.
+Possible values: `"adjusted"`, `"unadjusted"`.}
 
-\item{normalize:}{boolean
-if set to True, the function will return a normalized data frame with the following columns 'Date','Security','Field'
-If the value of this parameter is False the returned data frame shape will have a different column for each field and a column
-for the security
-The default value is False
-Remark: This parameter has a less precedence than the parameter rawOutput i.e. if rawOutput is set to True, the returned data will be the raw data and this parameter will be ignored}
-
-\item{debug:}{bool
-When set to True, the json request and response are printed.}
+\item{debug}{A logical value. If `TRUE`, prints debug messages, including JSON request and response. Default: `FALSE`.}
+}
+\value{
+A data frame with historical data or a JSON response if `raw_output = TRUE`.
 }
 \description{
-Returns historical data for one or several RICs
-}
-\examples{
-
-> eikonapir.set_app_id('YOUR_APP_ID')
-> df = get_timeseries(list("MSFT.O","VOD.L","IBM.N"),list("*"),"2016-01-01T15:04:05","2016-01-10T15:04:05","daily")
-> print(df)
+Fetches historical data for one or multiple RICs from the API.
 }

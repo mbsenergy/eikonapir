@@ -1,61 +1,62 @@
+#' Send JSON Request
+#'
+#' Sends a JSON request to the API using the configured proxy port and application ID.
+#'
+#' @param entity A character string specifying the entity to query.
+#' @param request_data A JSON string or a named list containing the request payload.
+#' @param debug A logical value. If `TRUE`, prints the request and response details for debugging.
+#'
+#' @return A character string containing the response data if the request is successful, otherwise `NULL`.
+#'
+#' @importFrom httr POST add_headers content
+#' @importFrom jsonlite fromJSON toJSON
+#' @importFrom crayon blue red green bold
+#' @export
+send_json_request = function(entity, request_data, debug=FALSE) {
 
-send_json_request <- function(entity, request_data, debug=FALSE)
-{
-
-  if (typeof(request_data) == 'character')
-  {
-    payload = jsonlite::fromJSON(request_data)
-  }
-  else
-  {
-    payload = request_data;
-  }
-
-  url = paste('http://localhost:',get_proxy_port(),'/api/v1/data',sep='')
-  request <- list('Entity'= list('E'= entity, 'W'= payload))
-  response <- httr::POST(url, httr::add_headers('Content-Type'='application/json','x-tr-applicationid'=get_app_id()),body=request,encode = "json")
-  response_data <- httr::content(response, "text")
-  response_status <- response$status_code
-
-  if (debug)
-  {
-    print("Request *************************************")
-    print(jsonlite::toJSON(request))
-    print("Response *************************************")
-    print(response_data)
-    print("Response status *************************************")
-    print(response_status)
-
+  # Convert JSON string to list if necessary
+  if (is.character(request_data)) {
+    payload = fromJSON(request_data)
+  } else {
+    payload = request_data
   }
 
-  if (response$status_code == 200)
-   {
-      return (response_data)
-   }
-   else
-   {
-     print("HTTP Error, code= ", response$status_code, sep="")
-     return (NULL)
-   }
+  # Construct API URL
+  url = paste0("http://localhost:", get_proxy_port(), "/api/v1/data")
 
+  # Prepare request payload
+  request = list('Entity' = list('E' = entity, 'W' = payload))
+
+  # Send HTTP POST request
+  response = POST(
+    url,
+    add_headers(
+      'Content-Type' = 'application/json',
+      'x-tr-applicationid' = get_app_id()
+    ),
+    body = request,
+    encode = "json"
+  )
+
+  # Extract response content
+  response_data = content(response, "text")
+  response_status = response$status_code
+
+  # Debugging information
+  if (debug) {
+    message(bold(blue("Request *************************************")))
+    message(blue(toJSON(request, pretty = TRUE)))
+    message(bold(green("Response *************************************")))
+    message(green(response_data))
+    message(bold("Response status *************************************"))
+    message(response_status)
+  }
+
+  # Handle response
+  if (response_status == 200) {
+    return(response_data)
+  } else {
+    message(bold(red("HTTP Error, code =")), red(response_status))
+    return(NULL)
+  }
 }
-
-
-# def get_data_value(value):
-#   if is_string_type(value):
-#   return value
-# elif value is dict:
-#   return value['value']
-# else:
-#   return value
-#
-#
-# def get_data_frame(data_dict):
-#   headers = [header['displayName'] for header in data_dict['headers'][0]]
-# data = np.array([[get_data_value(value) for value in row] for row in data_dict['data']])
-# df = pd.DataFrame(data, columns=headers)
-# df = df.apply(pd.to_numeric, errors='ignore')
-# errors = get_json_value(data_dict, 'error')
-# return df, errors
-
-

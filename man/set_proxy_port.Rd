@@ -2,19 +2,17 @@
 % Please edit documentation in R/profile.R
 \name{set_proxy_port}
 \alias{set_proxy_port}
-\title{set_proxy_port}
+\title{Set Proxy Port}
 \usage{
 set_proxy_port(port)
 }
 \arguments{
-\item{port:}{integer}
+\item{port}{An integer specifying the proxy port.}
 }
 \description{
-By default the library will try to connect to the proxy default port 9000.
-Use this function if the proxy is listening on another port than 9000
+Sets the proxy port. By default, the library connects to port 9000 unless overridden.
 }
 \examples{
---------
-library(eikon_r)
+library(eikonapir)
 set_proxy_port(37009L)
 }

@@ -1,125 +1,95 @@
+#' Initialize the Library Context
 #'
-#' init
-#'
-#' Initialize the library context
-#'
+#' This function initializes the library context by creating a global `RequestInfo` object if it does not already exist.
 #'
 #' @examples
-#'--------
-#' library(eikon_r)
+#' library(eikonapir)
 #' init()
-
-init <- function()
-{
-
-  if (exists("requestInfo") == FALSE)
-  {
+#' @export
+init = function() {
+  if (!exists("requestInfo", envir = .GlobalEnv)) {
     requestInfo <<- new("RequestInfo")
   }
-
-
 }
 
+#' Set Application ID
 #'
-#' set_app_id
+#' Sets the application ID, which must be configured before calling functions to retrieve data.
 #'
-#' Use this function to set your application id.
-#' The application id should be set before calling functions to retrieve data
-#' @param appId: string
-#'
+#' @param appId A character string representing the application ID.
 #'
 #' @examples
-#'--------
-#' library(eikon_r)
-#' set_app_id('YOUR_APP_ID')
-
-set_app_id <- function(appId) {
+#' library(eikonapir)
+#' set_app_id("YOUR_APP_ID")
+#' @export
+set_app_id = function(appId) {
   init()
   requestInfo@application_id <<- appId
 }
 
-
+#' Get Application ID
 #'
-#' get_app_id
+#' Retrieves the application ID that was previously set using `set_app_id()`.
 #'
-#' Use this function to get back the application id you have set earlier with set_app_id.
-#'
+#' @return A character string containing the application ID.
 #'
 #' @examples
-#'--------
-#' library(eikon_r)
+#' library(eikonapir)
 #' my_app_id = get_app_id()
-
-get_app_id <- function(appId) {
+#' @export
+get_app_id = function() {
   init()
-  return (requestInfo@application_id)
+  return(requestInfo@application_id)
 }
 
-
+#' Set Proxy Port
 #'
-#' set_proxy_port
+#' Sets the proxy port. By default, the library connects to port 9000 unless overridden.
 #'
-#' By default the library will try to connect to the proxy default port 9000.
-#' Use this function if the proxy is listening on another port than 9000
-#' @param port: integer
-#'
+#' @param port An integer specifying the proxy port.
 #'
 #' @examples
-#'--------
-#' library(eikon_r)
+#' library(eikonapir)
 #' set_proxy_port(37009L)
-set_proxy_port <- function(port) {
+#' @export
+set_proxy_port = function(port) {
   init()
-  requestInfo@proxy_port <<- port
+  requestInfo@proxy_port <<- as.integer(port)
 }
 
+#' Get Proxy Port
 #'
-#' get_proxy_port
+#' Retrieves the currently configured proxy port.
 #'
-#' Use this function to get back the proxy port the library will connect to
-#'
+#' @return An integer representing the proxy port.
 #'
 #' @examples
-#'--------
-#' library(eikon_r)
+#' library(eikonapir)
 #' prox_port = get_proxy_port()
-
-get_proxy_port <- function(port) {
+#' @export
+get_proxy_port = function() {
   init()
-  return (requestInfo@proxy_port)
+  return(requestInfo@proxy_port)
 }
 
-
-
-
-RequestInfo <- setClass(
-  # Set the name for the class
+#' RequestInfo Class
+#'
+#' A class representing request configuration, including the application ID, proxy port, and service URL.
+#'
+#' @slot application_id A character string representing the application ID.
+#' @slot proxy_port An integer specifying the proxy port (default: `9000L`).
+#' @slot url A character string containing the service URL.
+#'
+#' @export
+RequestInfo = setClass(
   "RequestInfo",
-
-  # Define the slots
   slots = c(
-    application_id  = "character",
-    proxy_port            = "integer",
-    url             = "character"
+    application_id = "character",
+    proxy_port = "integer",
+    url = "character"
   ),
-
-  prototype=list(application_id="",proxy_port=9000L,url=""),
-
-  # Make a function that can test to see if the data is consistent.
-  # This is not called if you have an initialize function defined!
-  validity=function(object)
-  {
-    #if(sum(object@velocity^2)>100.0) {
-      #return("The velocity level is out of bounds.")
-    #}
+  prototype = list(application_id = "", proxy_port = 9000L, url = ""),
+  validity = function(object) {
     return(TRUE)
   }
-
-
 )
-
-
-
-
-
-

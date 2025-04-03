@@ -2,19 +2,17 @@
 % Please edit documentation in R/profile.R
 \name{set_app_id}
 \alias{set_app_id}
-\title{set_app_id}
+\title{Set Application ID}
 \usage{
 set_app_id(appId)
 }
 \arguments{
-\item{appId:}{string}
+\item{appId}{A character string representing the application ID.}
 }
 \description{
-Use this function to set your application id.
-The application id should be set before calling functions to retrieve data
+Sets the application ID, which must be configured before calling functions to retrieve data.
 }
 \examples{
---------
-library(eikon_r)
-set_app_id('YOUR_APP_ID')
+library(eikonapir)
+set_app_id("YOUR_APP_ID")
 }

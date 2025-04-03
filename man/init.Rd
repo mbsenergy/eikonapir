@@ -2,15 +2,14 @@
 % Please edit documentation in R/profile.R
 \name{init}
 \alias{init}
-\title{init}
+\title{Initialize the Library Context}
 \usage{
 init()
 }
 \description{
-Initialize the library context
+This function initializes the library context by creating a global `RequestInfo` object if it does not already exist.
 }
 \examples{
---------
-library(eikon_r)
+library(eikonapir)
 init()
 }

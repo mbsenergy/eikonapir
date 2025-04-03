@@ -2,15 +2,17 @@
 % Please edit documentation in R/profile.R
 \name{get_proxy_port}
 \alias{get_proxy_port}
-\title{get_proxy_port}
+\title{Get Proxy Port}
 \usage{
-get_proxy_port(port)
+get_proxy_port()
+}
+\value{
+An integer representing the proxy port.
 }
 \description{
-Use this function to get back the proxy port the library will connect to
+Retrieves the currently configured proxy port.
 }
 \examples{
---------
-library(eikon_r)
+library(eikonapir)
 prox_port = get_proxy_port()
 }
