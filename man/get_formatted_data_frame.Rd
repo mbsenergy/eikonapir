@@ -11,6 +11,7 @@ get_formatted_data_frame(data)
 }
 \value{
 A data frame where each row represents a time series entry, with an added `Security` column.
+importFrom data.table setDT
 }
 \description{
 This function takes raw time series data and returns it in a structured wide-format data frame.

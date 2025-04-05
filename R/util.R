@@ -85,6 +85,7 @@ set_string_property = function(list_object, property, value) {
 #'
 #' @param data A list containing a `timeseriesData` element with structured time series data.
 #' @return A data frame where each row represents a time series entry, with an added `Security` column.
+#' importFrom data.table setDT
 #' @export
 get_formatted_data_frame = function(data) {
   input_data_frame = data$timeseriesData
@@ -102,7 +103,9 @@ get_formatted_data_frame = function(data) {
     data_frames[[i]] = data_frame
   }
 
-  return(do.call(rbind, data_frames))
+  DATAS = do.call(rbind, data_frames)
+  setDT(DATAS)
+  return(DATAS)
 }
 
 

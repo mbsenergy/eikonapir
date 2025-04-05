@@ -14,7 +14,8 @@ get_timeseries(
   calendar = NULL,
   count = NULL,
   corax = NULL,
-  debug = FALSE
+  debug = FALSE,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -47,6 +48,8 @@ Possible values: `"native"`, `"tradingdays"`, `"calendardays"`.}
 Possible values: `"adjusted"`, `"unadjusted"`.}
 
 \item{debug}{A logical value. If `TRUE`, prints debug messages, including JSON request and response. Default: `FALSE`.}
+
+\item{verbose}{A logical value. If `TRUE`, prints messages. Default: `FALSE`.}
 }
 \value{
 A data frame with historical data or a JSON response if `raw_output = TRUE`.

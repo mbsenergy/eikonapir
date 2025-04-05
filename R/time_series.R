@@ -22,15 +22,17 @@
 #'   If `FALSE`, returns a data frame. Default: `FALSE`.
 #'   This parameter is ignored if `raw_output = TRUE`. Default: `FALSE`.
 #' @param debug A logical value. If `TRUE`, prints debug messages, including JSON request and response. Default: `FALSE`.
+#' @param verbose A logical value. If `TRUE`, prints messages. Default: `FALSE`.
 #'
 #' @return A data frame with historical data or a JSON response if `raw_output = TRUE`.
 #'
 #' @importFrom jsonlite fromJSON
 #' @importFrom crayon red green bold
+#' @importFrom emo ji
 #' @export
 get_timeseries = function(rics, fields = "*", start_date = NULL, end_date = NULL, interval = "daily",
                           raw_output = FALSE, calendar = NULL, count = NULL, corax = NULL,
-                          debug = FALSE) {
+                          debug = FALSE, verbose = FALSE) {
 
   TimeSeries_endpoint = "TimeSeries"
 
@@ -86,13 +88,26 @@ get_timeseries = function(rics, fields = "*", start_date = NULL, end_date = NULL
 
   # Return raw JSON if requested
   if (raw_output) {
+
+    if(verbose) {message(crayon::blue$bold(paste(emo::ji("package"), "RAW JSON retrieved")))}
     return(json_data)
+
+  } else {
+
+    # Parse response JSON
+    data = fromJSON(json_data)
+
+    data = get_formatted_data_frame(data)
+    if(verbose) {
+    message(crayon::green$bold(paste(emo::ji("chart_with_upwards_trend"),
+                                     "Data retrieved correctly for:",
+                                     paste(rics, collapse = ", "),
+                                     "\n  Start:", start_date,
+                                     "\n  End:  ", end_date)))
+    }
+
+    return(data)
+
   }
-
-  # Parse response JSON
-  data = fromJSON(json_data)
-
-  data = get_formatted_data_frame(data)
-  return(data)
 
 }

@@ -1,12 +1,31 @@
 Package: eikonapir
 Type: Package
 Title: Refinitiv Eikon Scripting API for R
-Description: An implementation in the R language of the Refinitiv API for Eikon users.
-Version: 1.0
+Version: 1.0.0
 Author: MBS
 Maintainer: MBS <alejandro.abraham@cerved.com>
-License: Apache2
+Description: Provides a lightweight R interface to the Refinitiv Eikon Scripting API,
+    enabling programmatic access to real-time and historical market data directly
+    from Eikon or via the Eikon API Proxy. The package supports retrieving time series,
+    metadata, and price data for financial instruments using simple function calls,
+    and returns data in structured R data frames. Requires a valid Refinitiv Eikon
+    license and an active Eikon session or proxy.
+License: Apache License 2.0
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
 URL: https://github.com/mbsenergy/eikonapir
+BugReports: https://github.com/mbsenergy/eikonapir/issues
+Depends: R (>= 3.5.0)
+Imports:
+    httr,
+    jsonlite,
+    crayon,
+    glue,
+    emo,
+    data.table
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
