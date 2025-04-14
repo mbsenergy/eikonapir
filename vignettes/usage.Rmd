@@ -26,7 +26,7 @@ Before running the tests, you need to configure the **connection to the Reuters 
 ```{r}
 
 library(data.table)
-library(eikonapir)
+library(eikondata)
 library(echarts4r)
 library(reactable)
 

@@ -10,6 +10,6 @@ init()
 This function initializes the library context by creating a global `RequestInfo` object if it does not already exist.
 }
 \examples{
-library(eikonapir)
+library(eikondata)
 init()
 }

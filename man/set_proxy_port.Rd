@@ -13,6 +13,6 @@ set_proxy_port(port)
 Sets the proxy port. By default, the library connects to port 9000 unless overridden.
 }
 \examples{
-library(eikonapir)
+library(eikondata)
 set_proxy_port(37009L)
 }

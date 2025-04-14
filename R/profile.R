@@ -3,7 +3,7 @@
 #' This function initializes the library context by creating a global `RequestInfo` object if it does not already exist.
 #'
 #' @examples
-#' library(eikonapir)
+#' library(eikondata)
 #' init()
 #' @export
 init = function() {
@@ -19,7 +19,7 @@ init = function() {
 #' @param appId A character string representing the application ID.
 #'
 #' @examples
-#' library(eikonapir)
+#' library(eikondata)
 #' set_app_id("YOUR_APP_ID")
 #' @export
 set_app_id = function(appId) {
@@ -34,7 +34,7 @@ set_app_id = function(appId) {
 #' @return A character string containing the application ID.
 #'
 #' @examples
-#' library(eikonapir)
+#' library(eikondata)
 #' my_app_id = get_app_id()
 #' @export
 get_app_id = function() {
@@ -49,7 +49,7 @@ get_app_id = function() {
 #' @param port An integer specifying the proxy port.
 #'
 #' @examples
-#' library(eikonapir)
+#' library(eikondata)
 #' set_proxy_port(37009L)
 #' @export
 set_proxy_port = function(port) {
@@ -64,7 +64,7 @@ set_proxy_port = function(port) {
 #' @return An integer representing the proxy port.
 #'
 #' @examples
-#' library(eikonapir)
+#' library(eikondata)
 #' prox_port = get_proxy_port()
 #' @export
 get_proxy_port = function() {

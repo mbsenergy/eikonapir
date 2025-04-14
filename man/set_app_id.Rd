@@ -13,6 +13,6 @@ set_app_id(appId)
 Sets the application ID, which must be configured before calling functions to retrieve data.
 }
 \examples{
-library(eikonapir)
+library(eikondata)
 set_app_id("YOUR_APP_ID")
 }

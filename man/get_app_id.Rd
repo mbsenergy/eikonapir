@@ -13,6 +13,6 @@ A character string containing the application ID.
 Retrieves the application ID that was previously set using `set_app_id()`.
 }
 \examples{
-library(eikonapir)
+library(eikondata)
 my_app_id = get_app_id()
 }

@@ -13,6 +13,6 @@ An integer representing the proxy port.
 Retrieves the currently configured proxy port.
 }
 \examples{
-library(eikonapir)
+library(eikondata)
 prox_port = get_proxy_port()
 }

@@ -1,10 +1,10 @@
-# eikonapir  
-**R wrapper for Refinitiv Eikon API**
+# eikondata  
+**R wrapper for LSEG Eikon Data API**
 
 ---
 
 ## Overview  
-`eikonapir` provides a streamlined interface for retrieving financial data from the Refinitiv Eikon platform directly within `R`. The package wraps around the Eikon Scripting API, allowing users to access historical time series and forward market data efficiently in `data.table` format.
+`eikondata` provides a streamlined interface for retrieving financial data from the LSEG Eikon Data platform directly within `R`. The package wraps around the Eikon API, allowing users to access historical time series and forward market data efficiently in `data.table` format.
 
 ---
 
@@ -12,10 +12,10 @@
 
 To use this R package, you must have:
 
-- ✅ **A valid Refinitiv Eikon license**  
-  Get one at [Refinitiv Eikon](https://customers.thomsonreuters.com/eikon/)
+- ✅ **A valid LSEG Eikon license**  
+  Get one at [LSEG Eikon](https://customers.thomsonreuters.com/eikon/)
   
-- ✅ **Refinitiv Eikon 4 Desktop** _or_ the **Refinitiv Eikon API Proxy**  
+- ✅ **LSEG Eikon 4 Desktop** _or_ the **LSEG Eikon API Proxy**  
   For more information: [Eikon Web and Scripting APIs](https://developers.thomsonreuters.com/eikon-apis/eikon-web-and-scripting-apis-limited-access)
 
 ---
@@ -26,7 +26,7 @@ Install the package using `remotes`:
 
 ````r
 install.packages("remotes")
-remotes::install_github("mbsenergy/eikonapir")
+remotes::install_github("mbsenergy/eikondata")
 ````
 
 
@@ -36,7 +36,7 @@ Start the Eikon Desktop or API Proxy and configure the API access in `R`:
 
 
 ````r
-library(eikonapir)
+library(eikondata)
 set_proxy_port(9000L)  # If using the proxy
 set_app_id(Sys.getenv("REUTERS_KEY"))
 ````

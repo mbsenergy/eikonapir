@@ -1,10 +1,10 @@
-Package: eikonapir
+Package: eikondata
 Type: Package
-Title: Refinitiv Eikon Scripting API for R
+Title: Eikon Scripting API for R
 Version: 1.0.0
 Author: MBS
 Maintainer: MBS <alejandro.abraham@cerved.com>
-Description: Provides a lightweight R interface to the Refinitiv Eikon Scripting API,
+Description: Provides a lightweight R interface to the LSEG Eikon Data API,
     enabling programmatic access to real-time and historical market data directly
     from Eikon or via the Eikon API Proxy. The package supports retrieving time series,
     metadata, and price data for financial instruments using simple function calls,
@@ -14,9 +14,8 @@ License: Apache License 2.0
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
-URL: https://github.com/mbsenergy/eikonapir
-BugReports: https://github.com/mbsenergy/eikonapir/issues
-Depends: R (>= 3.5.0)
+URL: https://github.com/mbsenergy/eikondata
+Depends: R (>= 4.0.0)
 Imports:
     httr,
     jsonlite,
