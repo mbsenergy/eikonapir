@@ -103,6 +103,7 @@
 #' @keywords datasets
 "pwr_mapped_codes"
 
+
 #' Gas Market Mapping Table
 #'
 #' A reference table mapping gas products to availability in Eikon data.
@@ -146,6 +147,22 @@
 #' @usage data(gas_products_full)
 #' @keywords datasets
 "gas_products_full"
+
+
+#' CO2 Market Product Codes Mapping
+#'
+#' Reference table mapping EUA market hubs to internal and external product codes.
+#'
+#' @format A `data.table` with 1 rows and 4 columns:
+#' \describe{
+#'   \item{products_CO2}{EUA market hub name (character)}
+#'   \item{products_CO2_code}{Internal product code used in models or systems (character)}
+#'   \item{spot_CO2_code}{Spot market code used for Eikon or other external data sources (character)}
+#'   \item{type}{Description name (character)}
+#' }
+#' @usage data(CO2_products_full)
+#' @keywords datasets
+"CO2_products_full"
 
 
 #' Reuters Month Codes
